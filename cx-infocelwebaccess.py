@@ -14,4 +14,4 @@ st.set_page_config(
 st.image("https://i.imgur.com/NwOV7Ob.jpg")
 
 df_infocelaccessDB = pd.read_csv('BD.csv')
-st.write(df_infocelaccessDB)
+print(df_infocelaccessDB)
