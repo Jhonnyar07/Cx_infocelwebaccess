@@ -47,3 +47,7 @@ if busqueda:
                 st.write(f"**Contraseña:** {fila['Contraseña']}")
     else:
         st.error("No se encontró ningún registro con esos datos.")
+
+st.write("----------------------------------------------------------------------------------------------------")
+
+st.markdown("<p style='text-align: center; color:gray; font-size: 14px;'> © 2024 PID Medioambiental, S.L. <br> J. Aguilar <br> Rev. 1.01 </p>", unsafe_allow_html=True)
