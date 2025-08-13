@@ -2,37 +2,35 @@ import streamlit as st
 import pandas as pd
 import os
 
-# --- CONFIGURACIÓN DE PÁGINA ---
+# Configuración de página
 st.set_page_config(
     page_title="Buscador Accesos Infocel",
     page_icon="static/bd.ico",
 )
 
-# --- LOGIN ---
+# Datos de usuarios
 USUARIOS = {
     "admin": "1234",
     "usuario": "abcd"
 }
 
+# Inicializar estado de sesión
 if "logueado" not in st.session_state:
     st.session_state.logueado = False
 
+# --- LOGIN ---
 if not st.session_state.logueado:
     st.markdown("<h2 style='text-align: center;'>Login de Acceso</h2>", unsafe_allow_html=True)
-
-    # Usamos un formulario para capturar login
-    with st.form(key="login_form"):
-        username = st.text_input("Usuario")
-        password = st.text_input("Contraseña", type="password")
-        submit_button = st.form_submit_button("Entrar")
-        
-        if submit_button:
-            if username in USUARIOS and password == USUARIOS[username]:
-                st.session_state.logueado = True
-                st.success("Login correcto")
-                st.experimental_rerun()  # ahora sí funciona
-            else:
-                st.error("Usuario o contraseña incorrectos")
+    
+    usuario = st.text_input("Usuario")
+    contrasena = st.text_input("Contraseña", type="password")
+    
+    if usuario and contrasena:
+        if usuario in USUARIOS and contrasena == USUARIOS[usuario]:
+            st.session_state.logueado = True
+            st.success("Login correcto")
+        else:
+            st.error("Usuario o contraseña incorrectos")
 
 # --- PANTALLA PRINCIPAL ---
 if st.session_state.logueado:
@@ -46,20 +44,15 @@ if st.session_state.logueado:
         st.image("https://i.imgur.com/NwOV7Ob.jpg")
         st.markdown("<h2 style='text-align: center;'>Accesos INFOCEL</h2>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Introduce el ID del equipo o Nombre del cliente</p>", unsafe_allow_html=True)
+        
         busqueda = st.text_input("")
-
         if busqueda:
             resultados = df[
                 df['ID del equipo'].astype(str).str.contains(busqueda, case=False, na=False) |
                 df['Cliente'].str.contains(busqueda, case=False, na=False)
             ]
-
             if not resultados.empty:
-                if len(resultados) > 1:
-                    st.subheader(f"Se encontraron {len(resultados)} coincidencias:")
-                elif len(resultados) == 1:
-                    st.subheader(f"Se encontró {len(resultados)} coincidencia:")
-
+                st.subheader(f"Se encontraron {len(resultados)} coincidencias:" if len(resultados) > 1 else "Se encontró 1 coincidencia:")
                 for i, fila in resultados.iterrows():
                     with st.expander(f"{fila['ID del equipo']} - {fila['Cliente']}"):
                         st.write(f"**ID del equipo:** {fila['ID del equipo']}")
@@ -69,6 +62,6 @@ if st.session_state.logueado:
                         st.write(f"**Contraseña:** {fila['Contraseña']}")
             else:
                 st.error("No se encontró ningún registro con esos datos.")
-
+        
         st.write("----------------------------------------------------------------------------------------------------")
         st.markdown("<p style='text-align: center; color:gray; font-size: 14px;'> © 2025 PID Medioambiental, S.L. <br> J. Aguilar <br> Rev. 1.01 </p>", unsafe_allow_html=True)
