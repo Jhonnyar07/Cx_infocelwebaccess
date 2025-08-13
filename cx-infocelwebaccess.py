@@ -42,6 +42,5 @@ if busqueda:
                 st.write(f"**Enlace Web:** {fila['Enlace Web']}")
                 st.write(f"**Usuario:** {fila['Usuario']}")
                 st.write(f"**Contraseña:** {fila['Contraseña']}")
-                st.write(f"**Tipo:** {fila['Tipo']}")
     else:
         st.error("No se encontró ningún registro con esos datos.")
