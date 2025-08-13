@@ -19,7 +19,14 @@ if "logueado" not in st.session_state:
     st.session_state.logueado = False
 
 if not st.session_state.logueado:
-    st.image("static/login.png")
+    st.markdown(
+    """
+    <div style="text-align:center;">
+        <img src="static/login.png" width="250">
+    </div>
+    """,
+    unsafe_allow_html=True
+    )
     st.markdown("<h2 style='text-align: center;'>Login de Acceso</h2>", unsafe_allow_html=True)
     username = st.text_input("Usuario")
     password = st.text_input("Contraseña", type="password")
