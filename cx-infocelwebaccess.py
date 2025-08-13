@@ -19,7 +19,9 @@ if "logueado" not in st.session_state:
     st.session_state.logueado = False
 
 if not st.session_state.logueado:
-    st.image("static/login.png", width=250)
+    col1, col2, col3 = st.columns([3, 2, 3])
+    with col2:
+        st.image("static/login.png")
     st.markdown("<h2 style='text-align: center;'>Control de Acceso</h2>", unsafe_allow_html=True)
     username = st.text_input("Usuario")
     password = st.text_input("Contraseña", type="password")
