@@ -4,7 +4,7 @@ import os
 
 st.set_page_config(
     page_title="Buscador Accesos Infocel",
-    page_icon=":smile:",
+    page_icon="BD.ico",
 )
 
 # Nombre del archivo
