@@ -17,20 +17,24 @@ USUARIOS = {
 if "logueado" not in st.session_state:
     st.session_state.logueado = False
 
-# Si no está logueado, mostrar pantalla de login
 if not st.session_state.logueado:
     st.markdown("<h2 style='text-align: center;'>Login de Acceso</h2>", unsafe_allow_html=True)
-    username = st.text_input("Usuario")
-    password = st.text_input("Contraseña", type="password")
 
-    if st.button("Entrar"):  # botón que dispara la verificación
-        if username in USUARIOS and password == USUARIOS[username]:
-            st.session_state.logueado = True
-            st.experimental_rerun()  # recarga mostrando la pantalla principal
-        else:
-            st.error("Usuario o contraseña incorrectos")
+    # Usamos un formulario para capturar login
+    with st.form(key="login_form"):
+        username = st.text_input("Usuario")
+        password = st.text_input("Contraseña", type="password")
+        submit_button = st.form_submit_button("Entrar")
+        
+        if submit_button:
+            if username in USUARIOS and password == USUARIOS[username]:
+                st.session_state.logueado = True
+                st.success("Login correcto")
+                st.experimental_rerun()  # ahora sí funciona
+            else:
+                st.error("Usuario o contraseña incorrectos")
 
-# --- PANTALLA PRINCIPAL SOLO SI ESTÁ LOGUEADO ---
+# --- PANTALLA PRINCIPAL ---
 if st.session_state.logueado:
     archivo_excel = "BD.xlsx"
 
@@ -41,7 +45,6 @@ if st.session_state.logueado:
 
         st.image("https://i.imgur.com/NwOV7Ob.jpg")
         st.markdown("<h2 style='text-align: center;'>Accesos INFOCEL</h2>", unsafe_allow_html=True)
-
         st.markdown("<p style='text-align: center;'>Introduce el ID del equipo o Nombre del cliente</p>", unsafe_allow_html=True)
         busqueda = st.text_input("")
 
