@@ -25,7 +25,7 @@ if not st.session_state.logueado:
     if username and password:
         if username in USUARIOS and password == USUARIOS[username]:
             st.session_state.logueado = True
-            st.success(f"Bienvenido {username}!")
+            st.markdown(f"<p style='text-align: center; color: green;'>Bienvenido {username}!</p>", unsafe_allow_html=True)
             col1, col2, col3 = st.columns([3, 1, 3])
             with col2:
                 st.button("Entrar")
