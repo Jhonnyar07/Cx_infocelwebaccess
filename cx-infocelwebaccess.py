@@ -5,7 +5,7 @@ import os
 #im = chart_with_upwards_trend
 st.set_page_config(
     page_title="Buscador Accesos Infocel",
-    page_icon = ":magnifying_glass_tilted_right:",
+    page_icon = ":smile:",
 )
 
 # Nombre del archivo
@@ -18,23 +18,11 @@ else:
     # Leer el Excel
     df = pd.read_excel(archivo_excel)
 
-    st.title("Buscador de Accesos INFOCEL")
-
-    # Campo de búsqueda
-    busqueda = st.text_input("Escribe texto para buscar en la base de datos")
-
-    if busqueda:
-        # Filtrar por coincidencia parcial en cualquier columna
-        filtro = df.apply(lambda fila: fila.astype(str).str.contains(busqueda, case=False, na=False), axis=1)
-        resultados = df[filtro.any(axis=1)]
-
-        st.write(f"Resultados encontrados: {len(resultados)}")
-        st.dataframe(resultados)
-
-st.title("Buscador de equipos")
+st.image("https://i.imgur.com/NwOV7Ob.jpg")
+st.title("Buscador de accesos INFOCEL")
 
 # Campo de búsqueda (por ID del equipo o por Cliente)
-busqueda = st.text_input("Escribe el ID del equipo o el Cliente:")
+busqueda = st.text_input("Escribe el ID del equipo o el nombre del Cliente:")
 
 if busqueda:
     # Filtrar por coincidencia exacta (ignorando mayúsculas/minúsculas)
@@ -52,6 +40,5 @@ if busqueda:
         st.write(f"**Enlace Web:** {fila['Enlace Web']}")
         st.write(f"**Usuario:** {fila['Usuario']}")
         st.write(f"**Contraseña:** {fila['Contraseña']}")
-        st.write(f"**Tipo:** {fila['Tipo']}")
     else:
         st.error("No se encontró ningún registro con esos datos.")
