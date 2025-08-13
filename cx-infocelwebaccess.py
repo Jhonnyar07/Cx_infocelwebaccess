@@ -4,7 +4,7 @@ import os
 
 #im = chart_with_upwards_trend
 st.set_page_config(
-    page_title="Buscador Accesos Infocel"
+    page_title="Buscador Accesos Infocel",
     page_icon = :magnifying_glass_tilted_right:,
 )
 
