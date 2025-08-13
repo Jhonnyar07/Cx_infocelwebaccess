@@ -26,7 +26,9 @@ if not st.session_state.logueado:
         if username in USUARIOS and password == USUARIOS[username]:
             st.session_state.logueado = True
             st.success(f"Bienvenido {username}!")
-            st.button("Entrar")
+            col1, col2, col3 = st.columns([3, 1, 3])
+            with col2:
+                st.button("Entrar")
         else:
             st.error("Usuario o contraseña incorrectos")
 else:
