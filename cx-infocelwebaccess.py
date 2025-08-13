@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import os
 
+#im = chart_with_upwards_trend
+st.set_page_config(
+    page_title="Buscador Accesos Infocel"
+    page_icon = :magnifying_glass_tilted_right:,
+)
+
 # Nombre del archivo
 archivo_excel = "BD.xlsx"
 
@@ -12,8 +18,7 @@ else:
     # Leer el Excel
     df = pd.read_excel(archivo_excel)
 
-    st.title("Buscador en BD.xlsx")
-    st.dataframe(df)
+    st.title("Buscador de Accesos INFOCEL")
 
     # Campo de búsqueda
     busqueda = st.text_input("Escribe texto para buscar en la base de datos")
