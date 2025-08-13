@@ -27,11 +27,12 @@ if not st.session_state.logueado:
     if username and password:
         if username in USUARIOS and password == USUARIOS[username]:
             st.session_state.logueado = True
-            st.experimental_rerun()  # Recarga la app mostrando el contenido principal
+            st.success("Login correcto. Desplázate hacia abajo para ver la información.")
         else:
             st.error("Usuario o contraseña incorrectos")
-else:
-    # --- CONTENIDO PRINCIPAL ---
+
+# --- CONTENIDO PRINCIPAL SOLO SI ESTÁ LOGUEADO ---
+if st.session_state.logueado:
     archivo_excel = "BD.xlsx"
 
     if not os.path.exists(archivo_excel):
