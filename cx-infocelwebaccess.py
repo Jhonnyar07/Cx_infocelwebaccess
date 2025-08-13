@@ -17,7 +17,7 @@ USUARIOS = {
 if "logueado" not in st.session_state:
     st.session_state.logueado = False
 
-# Mostrar login si no se ha iniciado sesión
+# Si no está logueado, mostrar pantalla de login
 if not st.session_state.logueado:
     st.markdown("<h2 style='text-align: center;'>Login de Acceso</h2>", unsafe_allow_html=True)
     username = st.text_input("Usuario")
@@ -27,11 +27,11 @@ if not st.session_state.logueado:
     if username and password:
         if username in USUARIOS and password == USUARIOS[username]:
             st.session_state.logueado = True
-            st.success("Login correcto. Desplázate hacia abajo para ver la información.")
+            st.experimental_rerun()  # recarga la app mostrando la pantalla principal
         else:
             st.error("Usuario o contraseña incorrectos")
 
-# --- CONTENIDO PRINCIPAL SOLO SI ESTÁ LOGUEADO ---
+# --- PANTALLA PRINCIPAL SOLO SI ESTÁ LOGUEADO ---
 if st.session_state.logueado:
     archivo_excel = "BD.xlsx"
 
