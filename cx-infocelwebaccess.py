@@ -18,7 +18,7 @@ else:
     df = pd.read_excel(archivo_excel)
 
 st.image("https://i.imgur.com/NwOV7Ob.jpg")
-st.title("Accesos INFOCEL")
+st.markdown("<h1 style='text-align: center;'>Accesos INFOCEL</h1>", unsafe_allow_html=True)
 
 # Campo de búsqueda (por ID del equipo o por Cliente)
 busqueda = st.text_input("Escribe el ID del equipo o el nombre del Cliente:")
