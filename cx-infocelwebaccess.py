@@ -13,5 +13,5 @@ st.set_page_config(
 
 st.image("https://i.imgur.com/NwOV7Ob.jpg")
 
-df_infocelaccessDB = pd.read_excel("https://github.com/Jhonnyar07/Cx_infocelwebaccess/blob/main/BDAccesosInfocel.xlsx")
+df_infocelaccessDB = pd.read_csv("BDAccesosInfocel.xlsx")
 st.write(df_infocelaccessDB)
