@@ -21,7 +21,8 @@ st.image("https://i.imgur.com/NwOV7Ob.jpg")
 st.markdown("<h1 style='text-align: center;'>Accesos INFOCEL</h1>", unsafe_allow_html=True)
 
 # Campo de búsqueda (por ID del equipo o por Cliente)
-busqueda = st.text_input("Escribe el ID del equipo o el nombre del Cliente:")
+st.markdown("<h3 style='text-align: center;'>Introduce el ID del equipo o Nombre del cliente</h3>", unsafe_allow_html=True)
+busqueda = st.text_input("")
 
 if busqueda:
     # Filtrar coincidencias parciales en ID o Cliente
