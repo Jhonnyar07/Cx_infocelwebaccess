@@ -18,7 +18,7 @@ else:
     df = pd.read_excel(archivo_excel)
 
 st.image("https://i.imgur.com/NwOV7Ob.jpg")
-st.markdown("<h1 style='text-align: center;'>Accesos INFOCEL</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>Accesos INFOCEL</h2>", unsafe_allow_html=True)
 
 # Campo de búsqueda (por ID del equipo o por Cliente)
 st.markdown("<p style='text-align: center;'>Introduce el ID del equipo o Nombre del cliente</p>", unsafe_allow_html=True)
