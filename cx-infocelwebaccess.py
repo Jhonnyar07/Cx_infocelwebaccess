@@ -17,4 +17,4 @@ df_infocelaccessDB = pd.read_excel(
     io = 'BD.xlsx',
     engine= 'openyxl',
 )
-print(df_infocelaccessDB)
+st.write(df_infocelaccessDB)
