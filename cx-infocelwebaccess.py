@@ -18,7 +18,7 @@ else:
     df = pd.read_excel(archivo_excel)
 
 st.image("https://i.imgur.com/NwOV7Ob.jpg")
-st.title("Buscador de accesos INFOCEL")
+st.title("Accesos INFOCEL")
 
 # Campo de búsqueda (por ID del equipo o por Cliente)
 busqueda = st.text_input("Escribe el ID del equipo o el nombre del Cliente:")
