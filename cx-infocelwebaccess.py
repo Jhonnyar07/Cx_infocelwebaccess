@@ -13,5 +13,9 @@ st.set_page_config(
 
 st.image("https://i.imgur.com/NwOV7Ob.jpg")
 
-df_infocelaccessDB = pd.read_excel('BD.xlsx')
+df_infocelaccessDB = pd.read_excel(
+    io = 'BD.xlsx',
+    engine= 'openyxl',
+    Sheet_name = 'BD',
+)
 print(df_infocelaccessDB)
