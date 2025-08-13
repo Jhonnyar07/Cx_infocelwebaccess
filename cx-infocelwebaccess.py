@@ -23,11 +23,10 @@ if not st.session_state.logueado:
     username = st.text_input("Usuario")
     password = st.text_input("Contraseña", type="password")
 
-    # Login automático al llenar ambos campos
-    if username and password:
+    if st.button("Entrar"):  # botón que dispara la verificación
         if username in USUARIOS and password == USUARIOS[username]:
             st.session_state.logueado = True
-            st.experimental_rerun()  # recarga la app mostrando la pantalla principal
+            st.experimental_rerun()  # recarga mostrando la pantalla principal
         else:
             st.error("Usuario o contraseña incorrectos")
 
