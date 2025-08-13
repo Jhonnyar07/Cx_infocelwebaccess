@@ -22,10 +22,11 @@ if not st.session_state.logueado:
     st.markdown("<h2 style='text-align: center;'>Login de Acceso</h2>", unsafe_allow_html=True)
     username = st.text_input("Usuario")
     password = st.text_input("Contraseña", type="password")
-    if st.button("Entrar"):
+    if username and password:
         if username in USUARIOS and password == USUARIOS[username]:
             st.session_state.logueado = True
             st.success(f"Bienvenido {username}!")
+            st.button("Entrar")
         else:
             st.error("Usuario o contraseña incorrectos")
 else:
