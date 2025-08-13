@@ -19,14 +19,9 @@ if "logueado" not in st.session_state:
     st.session_state.logueado = False
 
 if not st.session_state.logueado:
-    st.markdown(
-    """
-    <div style="text-align:center;">
-        <img src="https://github.com/Jhonnyar07/Cx_infocelwebaccess/blob/main/static/login.png" width="250">
-    </div>
-    """,
-    unsafe_allow_html=True
-    )
+    st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
+    st.image("static/login.png", width=250)
+    st.markdown("</div>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center;'>Control de Acceso</h2>", unsafe_allow_html=True)
     username = st.text_input("Usuario")
     password = st.text_input("Contraseña", type="password")
