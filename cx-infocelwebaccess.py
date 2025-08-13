@@ -9,7 +9,6 @@ st.set_page_config(
 )
 
 # --- LOGIN ---
-# Usuarios y contraseñas (puedes agregarlos aquí)
 USUARIOS = {
     "admin": "1234",
     "usuario": "abcd"
@@ -18,14 +17,17 @@ USUARIOS = {
 if "logueado" not in st.session_state:
     st.session_state.logueado = False
 
+# Mostrar login si no se ha iniciado sesión
 if not st.session_state.logueado:
     st.markdown("<h2 style='text-align: center;'>Login de Acceso</h2>", unsafe_allow_html=True)
     username = st.text_input("Usuario")
     password = st.text_input("Contraseña", type="password")
+
+    # Login automático al llenar ambos campos
     if username and password:
         if username in USUARIOS and password == USUARIOS[username]:
             st.session_state.logueado = True
-            st.success(f"Bienvenido {username}!")
+            st.experimental_rerun()  # Recarga la app mostrando el contenido principal
         else:
             st.error("Usuario o contraseña incorrectos")
 else:
