@@ -32,7 +32,10 @@ if busqueda:
     ]
 
     if not resultados.empty:
-        st.subheader(f"Se encontraron {len(resultados)} coincidencias:")
+        if len(resultados) > 1:
+            st.subheader(f"Se encontraron {len(resultados)} coincidencias:")
+        elif len(resultados) == 1:
+            st.subheader(f"Se encontró {len(resultados)} coincidencia:")
         
         # Mostrar cada coincidencia en un expander
         for i, fila in resultados.iterrows():
