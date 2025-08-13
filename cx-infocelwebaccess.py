@@ -27,8 +27,8 @@ busqueda = st.text_input("Escribe el ID del equipo o el nombre del Cliente:")
 if busqueda:
     # Filtrar por coincidencia exacta (ignorando mayúsculas/minúsculas)
     resultados = df[
-        (df['ID del equipo'].astype(str).str.lower() == busqueda.lower()) |
-        (df['Cliente'].str.lower() == busqueda.lower())
+        df['ID del equipo'].astype(str).str.contains(busqueda, case=False, na=False) |
+        df['Cliente'].str.contains(busqueda, case=False, na=False)
     ]
 
     if not resultados.empty:
