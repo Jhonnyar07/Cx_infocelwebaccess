@@ -12,6 +12,7 @@ st.set_page_config(
 # Usuarios y contraseñas (puedes agregarlos aquí)
 USUARIOS = {
     "asp": "asepsia",
+    "Asp": "asepsia",
     "tecnico": "t3cnico"
 }
 
